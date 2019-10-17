@@ -1,7 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MergeO.Builders\**" />
+    <Compile Remove="MergeO.Contracts\**" />
+    <Compile Remove="MergeO.Mocks\**" />
+    <Compile Remove="MergeO.UnitTests\**" />
+    <EmbeddedResource Remove="MergeO.Builders\**" />
+    <EmbeddedResource Remove="MergeO.Contracts\**" />
+    <EmbeddedResource Remove="MergeO.Mocks\**" />
+    <EmbeddedResource Remove="MergeO.UnitTests\**" />
+    <None Remove="MergeO.Builders\**" />
+    <None Remove="MergeO.Contracts\**" />
+    <None Remove="MergeO.Mocks\**" />
+    <None Remove="MergeO.UnitTests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="MergeO.Contracts\MergeO.Contracts.csproj" />
+  </ItemGroup>
 
 </Project>
