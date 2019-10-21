@@ -71,7 +71,7 @@
         {
             // the merger will sort the objects, meaning the "highest" item is expected to be merged
             var expected = history.Max();
-            var mergedValue = (SequencedComplexItem)_merger.Merge(history);
+            var mergedValue = _merger.Merge(history, historyComparer: null);
 
             Assert.AreEqual(expected.StringValue, mergedValue.StringValue, "String value is incorrectly merged.");
         }

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Nested\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MergeO.Contracts\MergeO.Contracts.csproj" />
+    <ProjectReference Include="..\MergeO.csproj" />
+  </ItemGroup>
+
+</Project>

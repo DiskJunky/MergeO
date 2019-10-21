@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeO.Mocks", "MergeO.Mock
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeO.UnitTests", "MergeO.UnitTests\MergeO.UnitTests.csproj", "{52498CE6-5B5E-442B-A049-D862C9852F8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MergeO.Samples", "MergeO.Samples\MergeO.Samples.csproj", "{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{52498CE6-5B5E-442B-A049-D862C9852F8B}.Release|x64.Build.0 = Release|Any CPU
 		{52498CE6-5B5E-442B-A049-D862C9852F8B}.Release|x86.ActiveCfg = Release|Any CPU
 		{52498CE6-5B5E-442B-A049-D862C9852F8B}.Release|x86.Build.0 = Release|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Debug|x64.Build.0 = Debug|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Debug|x86.Build.0 = Debug|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Release|x64.ActiveCfg = Release|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Release|x64.Build.0 = Release|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Release|x86.ActiveCfg = Release|Any CPU
+		{A47C9A10-8AA5-4FCD-AC9B-4474B4F9993B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

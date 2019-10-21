@@ -99,6 +99,34 @@
 
             return value;
         }
+
+        /// <summary>
+        /// This merges a history of an object graph into a single object instance of type <typeparamref name="T"/>
+        /// that contains the most recent data.
+        /// </summary>
+        /// <param name="historyComparer">The comparer instance to use for sorting the history before merge. Will
+        /// default to the type's default comparer if none specified.</param>
+        /// <param name="nonDefaultMergeCriteria">Any object/property-specific criteria where by to determine
+        /// when to overwrite the value when evaluating the property's history.</param>
+        /// <param name="history">The history of object data to merge, in order.</param>
+        /// <returns>A single object instance containing the most recent data.</returns>
+        /// <typeparam name="T">The type of object to merge.</typeparam>
+        public T Merge<T>(IComparer<T> historyComparer = null, ICollection<IMergeCriteria> nonDefaultMergeCriteria = null, params T[] history)
+        {
+            return Merge(history, historyComparer, nonDefaultMergeCriteria);
+        }
+        
+        /// <summary>
+        /// This merges a history of an object graph into a single object instance of type <typeparamref name="T"/>
+        /// that contains the most recent data.
+        /// </summary>
+        /// <param name="history">The history of object data to merge, in order.</param>
+        /// <returns>A single object instance containing the most recent data.</returns>
+        /// <typeparam name="T">The type of object to merge.</typeparam>
+        public T MergeItems<T>(params T[] history)
+        {
+            return Merge(null, null, history: history);
+        }
         #endregion
 
         #region Private Methods
