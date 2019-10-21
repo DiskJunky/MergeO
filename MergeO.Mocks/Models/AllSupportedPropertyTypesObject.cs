@@ -2,6 +2,7 @@
 {
     using MergeO.Helpers;
     using System;
+    using System.Linq;
     using System.Reflection;
 
     public class AllSupportedPropertyTypesObject : IComparable
@@ -38,15 +39,14 @@
         public int CompareTo(object obj)
         {
             var typedObj = (AllSupportedPropertyTypesObject)obj;
-            int result = StringValue.CompareTo(typedObj.StringValue);
+            int result = string.Compare(StringValue, typedObj.StringValue);
             if (result == 0)
             {
                 result = IntValue.CompareTo(typedObj.IntValue);
             }
             if (result == 0)
             {
-                //result = NullableIntValue?.CompareTo(typedObj?.NullableIntValue);
-            }
+                result = Nullable.Compare(NullableIntValue, typedObj.NullableIntValue); }
 
             if (result == 0)
             {
@@ -55,7 +55,7 @@
 
             if (result == 0)
             {
-                //result = NullableDoubleValue.Compare(typedObj.NullableDoubleValue);
+                result = Nullable.Compare(NullableDoubleValue, typedObj.NullableDoubleValue);
             }
 
             if (result == 0)
@@ -65,12 +65,15 @@
 
             if (result == 0)
             {
-                //result = NullableDateTimeValue.Compare(typedObj.NullableDateTimeValue);
+                result = Nullable.Compare(NullableDateTimeValue, typedObj.NullableDateTimeValue);
             }
 
             if (result == 0)
             {
-                //result = ByteArrayValue.Compare(typedObj.ByteArrayValue);
+                // TODO: this is more correctly done by using SequenceCompareTo()
+                //       method but this is only available from Standard 2.1 onwards.
+                //       Use basic custom implementation for backward compatibility.
+                //result =  ByteArrayValue.SequenceEqual(typedObj.ByteArrayValue);
             }
 
             return result;
