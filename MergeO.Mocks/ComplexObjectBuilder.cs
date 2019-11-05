@@ -30,12 +30,25 @@
             return obj;
         }
 
-        public static List<ComplexObjectNullableFields[]> GetComplexObjectNullibleFieldSet()
+        public static List<ComplexObjectTestCriteria> GetComplexObjectNullibleFieldSet()
         {
-            var histories = new List<ComplexObjectNullableFields[]>();
+            var histories = new List<ComplexObjectTestCriteria>();
 
-            histories.Add(new [] { GetDefaultsWithNulls(), GetDefaultAllFieldsFilled() } );
-            histories.Add(new[] { GetDefaultAllFieldsFilled(), GetDefaultsWithNulls() });
+            var nullReplacedTest = new ComplexObjectTestCriteria
+            {
+                History = new[] { GetDefaultsWithNulls(), GetDefaultAllFieldsFilled() }
+            };
+            nullReplacedTest.Expected = nullReplacedTest.History[1];
+
+            var nullDoesNothingTest = new ComplexObjectTestCriteria
+            {
+                History = new[] { GetDefaultAllFieldsFilled(), GetDefaultsWithNulls() }
+            };
+            nullDoesNothingTest.Expected = nullDoesNothingTest.History[0];
+            
+            
+            histories.Add(nullReplacedTest);
+            histories.Add(nullDoesNothingTest);
 
             return histories;
         }
