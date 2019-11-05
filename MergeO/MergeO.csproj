@@ -20,6 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.9.0" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MergeO.Contracts\MergeO.Contracts.csproj" />
   </ItemGroup>
 

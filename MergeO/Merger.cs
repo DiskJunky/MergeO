@@ -7,6 +7,7 @@
     using MergeO.Contracts;
     using MergeO.Helpers;
     using MergeO.MergeCriteria;
+    using Serilog;
 
     /// <summary>
     /// This object is used to merge a history of objects into a single instance of that
@@ -19,21 +20,35 @@
         /// Holdsa a reference to the default write criteria.
         /// </summary>
         private readonly IMergeCriteria _defaultMergeCriteria;
+
+        /// <summary>
+        /// The logging sink implementation to send logs to. Should be defaulted
+        /// to the debug console if no other sink is provided.
+        /// </summary>
+        private readonly ILogger _logger;
         #endregion
 
         #region Lifetime Management
         /// <summary>
         /// Instantiates the object with the behaviour of <see cref="AlwaysUseNewer"/> as default.
         /// </summary>
-        public Merger() : this(new AlwaysUseNewer()) { }
+        /// <param name="logger">The logging instance to use. If not provided, logs are
+        /// written to the attached debugger.</param>
+        public Merger(ILogger logger = null) : this(new AlwaysUseNewer(), logger) { }
 
         /// <summary>
         /// Instantiates the object with the specified default behaviour.
         /// </summary>
         /// <param name="defaultMergeCriteria">The default write criteria.</param>
-        public Merger(IMergeCriteria defaultMergeCriteria)
+        /// <param name="logger">The logging instance to use. If not provided, logs are
+        /// written to the attached debugger.</param>
+        public Merger(IMergeCriteria defaultMergeCriteria, ILogger logger = null)
         {
             _defaultMergeCriteria = defaultMergeCriteria;
+            _logger = logger ?? new LoggerConfiguration()
+                                    .WriteTo
+                                    .Debug()
+                                    .CreateLogger();
         }
         #endregion
 
@@ -93,7 +108,7 @@
             }
             catch (Exception e)
             {
-                //TODO lOG: "There was a problem trying to merge an Model history.");
+                _logger.Error(e, "There was a problem trying to merge an Model history.");
                 throw;
             }
 
@@ -202,7 +217,7 @@
             {
                 breadcrumb = valueType.Name;
             }
-            //TODO lOG: .Trace($"Merging at [{breadcrumb}]...");
+            _logger.Verbose($"Merging at [{breadcrumb}]...");
 
             // are we dealing with a simple data type
             Type underlyingType;
@@ -260,7 +275,7 @@
                                                propertyBreadcrumb);
                 }
 
-                //TODO lOG: Trace($"Setting property {propertyBreadcrumb} with: {mergedValue}");
+                _logger.Verbose($"Setting property {propertyBreadcrumb} with: {mergedValue}");
                 property.SetValue(merged, mergedValue);
             }
 
