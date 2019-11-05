@@ -62,7 +62,7 @@ LastName = "Soap"
 ## Complex Examples
 MergeO can deal with more complex merges, handing nested objects, collections, custom merge
 styles and custom merge styles only at particular points in the model. This section will
-outline each of these scenarios.
+outline some of these scenarios.
 
 ### Nested Merges
 For nested objects, the same principles apply. The merge strategy (more on that later), used
@@ -126,7 +126,7 @@ as there is no way for the library to know ahead of time how it should sort a gi
 
 What does this look like in practice? Let's say that our `Pet` property gets expanded to `List<Pet>`
 and we want to sort by `Name` as pets are added to the details. We'd have to create a `PetComparer`
-class like so that (for the purposes of this example), simply wraps `string.Compare()`;
+class that (for the purposes of this example), simply wraps `string.Compare()`;
 ```
 class PetComparer : IComparer<Pet>
 {
@@ -138,7 +138,7 @@ class PetComparer : IComparer<Pet>
 ```
 
 That creates our comparer, but how do we tell the merge to use it? To do this, we need to pass in a
-collection of customized `IMergeCriteria` that tell the merger how it should perform the merge using
+collection of customized `IMergeCriteria` that tells the merger how it should perform the merge using
 our new `PetComparer`. Following on from the simple example earlier where we had;
 ```
 public Person Merge(Person first, Person second)
@@ -189,7 +189,7 @@ merger that wraps the rules into a single location.
 
 Other custimizations can be done taking the same approach as seen here. You could specify
 `AlwaysUseNewer` at a particular location using the same approach though without needing to create
-a customer comparer.
+a custom comparer.
 
 Unit tests found at `MergeO.UnitTests.MergerTests.Merger_DefaultMergeCriteria_UsesNewValues(params ComplexObjectNullableFields[] history)` [here](https://github.com/DiskJunky/MergeO/blob/7daf5fe158a511e63ebb33689ef817f9a557f605/MergeO.UnitTests/MergerTests.cs#L53).
 
