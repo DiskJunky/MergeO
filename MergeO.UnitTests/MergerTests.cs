@@ -50,11 +50,11 @@
         }
 
         [TestCaseSource(typeof(ComplexObjectBuilder), nameof(ComplexObjectBuilder.GetComplexObjectNullibleFieldSet))]
-        public void Merger_DefaultMergeCriteria_UsesNewValues(params ComplexObjectNullableFields[] history)
+        public void Merger_DefaultMergeCriteria_UsesNewValues(ComplexObjectTestCriteria criteria)
         {
             // the merger will sort the objects, meaning the "highest" item is expected to be merged
-            var expected = history.Max();
-            var mergedValue = (ComplexObjectNullableFields)_merger.Merge(history);
+            var expected = criteria.Expected;
+            var mergedValue = (ComplexObjectNullableFields)_merger.Merge(criteria.History);
 
             Assert.AreEqual(expected.NullableIntValue, mergedValue.NullableIntValue, "Nullible int value is incorrectly merged.");
             Assert.AreEqual(expected.NullableDoubleValue, mergedValue.NullableDoubleValue, "Nullible double value is incorrectly merged.");
@@ -67,23 +67,23 @@
         }
 
         [TestCaseSource(typeof(SequencedComplexItemBuilder), nameof(SequencedComplexItemBuilder.CreateMostRecentValueTestSet))]
-        public void Merger_DefaultMergeCriteria_UsesNewValues(List<SequencedComplexItem> history)
+        public void Merger_DefaultMergeCriteria_UsesNewValues(SequencedComplexItemTestCriteria criteria)
         {
             // the merger will sort the objects, meaning the "highest" item is expected to be merged
-            var expected = history.Max();
-            var mergedValue = _merger.Merge(history, historyComparer: null);
+            var expected = criteria.Expected;
+            var mergedValue = _merger.Merge(criteria.SequencedComplexItem, historyComparer: null);
 
             Assert.AreEqual(expected.StringValue, mergedValue.StringValue, "String value is incorrectly merged.");
         }
 
         [TestCaseSource(typeof(SequencedComplexItemBuilder), nameof(SequencedComplexItemBuilder.CreateMostRecentValueTestSet))]
-        public void Merger_NeverOverwriteSequenceID1MergeCriteria_UsesSequenceID1Value(List<SequencedComplexItem> history)
+        public void Merger_NeverOverwriteSequenceID1MergeCriteria_UsesSequenceID1Value(SequencedComplexItemTestCriteria criteria)
         {
             // the merger will sort the objects, meaning the "highest" item is expected to be merged
-            var expected = history.First();         // the builder always puts the first item with index 1
+            var expected = criteria.SequencedComplexItem.First(s => s.SequenceID == 1);
             var alwaysSequenceID1MergeCriteria = new SequencedComplexItemStringValueMergeCriteria_NeverOverwriteSequenceID1();
             var nonDefaultMergeCriteria = new List<IMergeCriteria>(new[] { alwaysSequenceID1MergeCriteria });
-            var mergedValue = (SequencedComplexItem)_merger.Merge(history, nonDefaultMergeCriteria: nonDefaultMergeCriteria);
+            var mergedValue = (SequencedComplexItem)_merger.Merge(criteria.SequencedComplexItem, nonDefaultMergeCriteria: nonDefaultMergeCriteria);
 
             Assert.AreEqual(expected.StringValue, mergedValue.StringValue, "String value is incorrectly merged.");
         }

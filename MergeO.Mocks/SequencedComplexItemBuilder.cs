@@ -43,11 +43,23 @@
             return Build(GetFieldNullInstance(), GetFilledInstance());
         }
 
-        public static List<List<SequencedComplexItem>> CreateMostRecentValueTestSet()
+        public static List<SequencedComplexItemTestCriteria> CreateMostRecentValueTestSet()
         {
-            var set = new List<List<SequencedComplexItem>>();
-            set.Add(GetNewNullValueSequence());
-            set.Add(GetNewFilledValueSequence());
+            var set = new List<SequencedComplexItemTestCriteria>();
+            var nullValueSequence = GetNewNullValueSequence();
+            set.Add(new SequencedComplexItemTestCriteria
+                    {
+                        SequencedComplexItem = nullValueSequence,
+                        Expected = nullValueSequence[0]
+                    });
+
+
+            var filledValueSequence = GetNewFilledValueSequence();
+            set.Add(new SequencedComplexItemTestCriteria
+                    {
+                        SequencedComplexItem = filledValueSequence,
+                        Expected = filledValueSequence[1]
+                    });
 
             return set;
         }

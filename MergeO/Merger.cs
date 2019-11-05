@@ -30,11 +30,11 @@
 
         #region Lifetime Management
         /// <summary>
-        /// Instantiates the object with the behaviour of <see cref="AlwaysUseNewer"/> as default.
+        /// Instantiates the object with the behaviour of <see cref="NeverOverwriteOldWithNull"/> as default.
         /// </summary>
         /// <param name="logger">The logging instance to use. If not provided, logs are
         /// written to the attached debugger.</param>
-        public Merger(ILogger logger = null) : this(new AlwaysUseNewer(), logger) { }
+        public Merger(ILogger logger = null) : this(new NeverOverwriteOldWithNull(), logger) { }
 
         /// <summary>
         /// Instantiates the object with the specified default behaviour.
