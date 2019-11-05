@@ -19,7 +19,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="InterpolateLists"/> class.
         /// </summary>
-        /// <param name="activateAt">The activate at.</param>
+        /// <param name="activateAt">The object graph location (as built by <see cref="BreadcrumbHelper" />), where the rule applies.</param>
         /// <param name="comparer">The comparer to use for sorting the list.</param>
         public InterpolateLists(string activateAt, IComparer<T> comparer)
         {
