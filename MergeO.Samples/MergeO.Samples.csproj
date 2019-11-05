@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MergeO.Contracts\MergeO.Contracts.csproj" />
-    <ProjectReference Include="..\MergeO.csproj" />
+    <ProjectReference Include="..\MergeO\MergeO.csproj" />
   </ItemGroup>
 
 </Project>
