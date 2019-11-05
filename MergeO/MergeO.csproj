@@ -1,6 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>MergeO</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>DiskJunky</Authors>
+    <Title>MergeO</Title>
+    <PackageDescription>
+      An object version of source control or incremental DB backup.
+      Start with your initial, fully filled object, then supply new instances
+      of that object with only partial data to update just those properties.
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/DiskJunky/MergeO</RepositoryUrl>
+    <Company></Company>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
 
