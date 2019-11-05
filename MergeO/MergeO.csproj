@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="MergeO.Contracts\MergeO.Contracts.csproj" />
+    <ProjectReference Include="..\MergeO.Contracts\MergeO.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

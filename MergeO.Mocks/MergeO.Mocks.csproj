@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MergeO.Contracts\MergeO.Contracts.csproj" />
-    <ProjectReference Include="..\MergeO.csproj" />
+    <ProjectReference Include="..\MergeO\MergeO.csproj" />
   </ItemGroup>
 
 </Project>

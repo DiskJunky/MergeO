@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MergeO.Contracts\MergeO.Contracts.csproj" />
-    <ProjectReference Include="..\MergeO.csproj" />
+    <ProjectReference Include="..\MergeO\MergeO.csproj" />
     <ProjectReference Include="..\MergeO.Mocks\MergeO.Mocks.csproj" />
   </ItemGroup>
 

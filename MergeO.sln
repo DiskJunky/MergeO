@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeO", "MergeO.csproj", "{507CD5AC-F821-4372-AC0C-3D31574E15E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeO", "MergeO\MergeO.csproj", "{507CD5AC-F821-4372-AC0C-3D31574E15E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeO.Contracts", "MergeO.Contracts\MergeO.Contracts.csproj", "{E9640A4D-1F02-47FE-9ABB-D14B433491DE}"
 EndProject
