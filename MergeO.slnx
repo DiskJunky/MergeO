@@ -1,0 +1,16 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="MergeO.Contracts/MergeO.Contracts.csproj" />
+  <Project Path="MergeO.Mocks/MergeO.Mocks.csproj" />
+  <Project Path="MergeO.Samples/MergeO.Samples.csproj" />
+  <Project Path="MergeO.UnitTests/MergeO.UnitTests.csproj" />
+  <Project Path="MergeO/MergeO.csproj" />
+</Solution>

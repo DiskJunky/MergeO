@@ -1,10 +1,12 @@
-﻿namespace MergeO.UnitTests
+﻿using MergeO.MergeCriteria;
+
+namespace MergeO.UnitTests
 {
     using System.Collections.Generic;
     using System.Linq;
-    using MergeO.Contracts;
-    using MergeO.Helpers;
-    using MergeO.MergeCriteria;
+    using Contracts;
+    using Helpers;
+    using MergeCriteria;
     using Mocks;
     using Mocks.MergeCriteria;
     using Mocks.Models;
@@ -13,7 +15,7 @@
     [TestFixture]
     public class MergerTests
     {
-        private Merger _merger = new Merger();
+        private readonly Merger _merger = new();
 
         [TestCase(1)]
         [TestCase(0, 1)]
@@ -33,7 +35,7 @@
             // value should always be the last one
             var mergedValue = _merger.Merge(values);
             var max = values.Max();
-            Assert.AreEqual(max, mergedValue);
+            Assert.That(max, Is.EqualTo(mergedValue));
         }
 
         [TestCaseSource(typeof(ChronologicalItemBuilder), nameof(ChronologicalItemBuilder.ChronologicalItemSet))]
@@ -46,7 +48,7 @@
 
             var mergedValue = _merger.Merge(typedValues, comparer);
             var expected = sorted[sorted.Count - 1];
-            Assert.AreEqual(expected.Moment, mergedValue.Moment);
+            Assert.That(expected.Moment, Is.EqualTo(mergedValue.Moment));
         }
 
         [TestCaseSource(typeof(ComplexObjectBuilder), nameof(ComplexObjectBuilder.GetComplexObjectNullibleFieldSet))]
@@ -54,16 +56,16 @@
         {
             // the merger will sort the objects, meaning the "highest" item is expected to be merged
             var expected = criteria.Expected;
-            var mergedValue = (ComplexObjectNullableFields)_merger.Merge(criteria.History);
+            var mergedValue = _merger.Merge(criteria.History);
 
-            Assert.AreEqual(expected.NullableIntValue, mergedValue.NullableIntValue, "Nullible int value is incorrectly merged.");
-            Assert.AreEqual(expected.NullableDoubleValue, mergedValue.NullableDoubleValue, "Nullible double value is incorrectly merged.");
-            Assert.AreEqual(expected.NullableDateTimeValue, mergedValue.NullableDateTimeValue, "Nullible date time value is incorrectly merged.");
-            Assert.AreEqual(expected.StringValue, mergedValue.StringValue, "String value is incorrectly merged.");
-            Assert.AreEqual(expected.ByteArrayValue, mergedValue.ByteArrayValue, "ByteArray value is incorrectly merged.");
-            Assert.AreEqual(expected.IntValue, mergedValue.IntValue, "Int value is incorrectly merged.");
-            Assert.AreEqual(expected.DoubleValue, mergedValue.DoubleValue, "Double value is incorrectly merged.");
-            Assert.AreEqual(expected.DateTimeValue, mergedValue.DateTimeValue, "DateTime value is incorrectly merged.");
+            Assert.That(expected.NullableIntValue, Is.EqualTo(mergedValue.NullableIntValue), "Nullible int value is incorrectly merged.");
+            Assert.That(expected.NullableDoubleValue, Is.EqualTo(mergedValue.NullableDoubleValue), "Nullible double value is incorrectly merged.");
+            Assert.That(expected.NullableDateTimeValue, Is.EqualTo(mergedValue.NullableDateTimeValue), "Nullible date time value is incorrectly merged.");
+            Assert.That(expected.StringValue, Is.EqualTo(mergedValue.StringValue), "String value is incorrectly merged.");
+            Assert.That(expected.ByteArrayValue, Is.EqualTo(mergedValue.ByteArrayValue), "ByteArray value is incorrectly merged.");
+            Assert.That(expected.IntValue, Is.EqualTo(mergedValue.IntValue), "Int value is incorrectly merged.");
+            Assert.That(expected.DoubleValue, Is.EqualTo(mergedValue.DoubleValue), "Double value is incorrectly merged.");
+            Assert.That(expected.DateTimeValue, Is.EqualTo(mergedValue.DateTimeValue), "DateTime value is incorrectly merged.");
         }
 
         [TestCaseSource(typeof(SequencedComplexItemBuilder), nameof(SequencedComplexItemBuilder.CreateMostRecentValueTestSet))]
@@ -73,7 +75,7 @@
             var expected = criteria.Expected;
             var mergedValue = _merger.Merge(criteria.SequencedComplexItem, historyComparer: null);
 
-            Assert.AreEqual(expected.StringValue, mergedValue.StringValue, "String value is incorrectly merged.");
+            Assert.That(expected.StringValue, Is.EqualTo(mergedValue.StringValue), "String value is incorrectly merged.");
         }
 
         [TestCaseSource(typeof(SequencedComplexItemBuilder), nameof(SequencedComplexItemBuilder.CreateMostRecentValueTestSet))]
@@ -83,9 +85,9 @@
             var expected = criteria.SequencedComplexItem.First(s => s.SequenceID == 1);
             var alwaysSequenceID1MergeCriteria = new SequencedComplexItemStringValueMergeCriteria_NeverOverwriteSequenceID1();
             var nonDefaultMergeCriteria = new List<IMergeCriteria>(new[] { alwaysSequenceID1MergeCriteria });
-            var mergedValue = (SequencedComplexItem)_merger.Merge(criteria.SequencedComplexItem, nonDefaultMergeCriteria: nonDefaultMergeCriteria);
+            var mergedValue = _merger.Merge(criteria.SequencedComplexItem, nonDefaultMergeCriteria: nonDefaultMergeCriteria);
 
-            Assert.AreEqual(expected.StringValue, mergedValue.StringValue, "String value is incorrectly merged.");
+            Assert.That(expected.StringValue, Is.EqualTo(mergedValue.StringValue), "String value is incorrectly merged.");
         }
 
         [Test]
@@ -96,9 +98,9 @@
             var neverOverwriteNullCriteria = new NeverOverwriteOldWithNull(mergeCriteriaKey);
             var nonDefaultMergeCriteria = new List<IMergeCriteria>(new[] {neverOverwriteNullCriteria});
 
-            var mergedValue = (SequencedComplexItem)_merger.Merge(sequence, nonDefaultMergeCriteria: nonDefaultMergeCriteria);
+            var mergedValue = _merger.Merge(sequence, nonDefaultMergeCriteria: nonDefaultMergeCriteria);
 
-            Assert.AreEqual(sequence[0].StringValue, mergedValue.StringValue);
+            Assert.That(sequence[0].StringValue, Is.EqualTo(mergedValue.StringValue));
         }
 
         [Test]
@@ -110,7 +112,7 @@
 
             var merged = _merger.Merge(sequence);
 
-            Assert.AreEqual(expected.Child.IntValue, merged.Child.IntValue);
+            Assert.That(expected.Child.IntValue, Is.EqualTo(merged.Child.IntValue));
         }
 
         [Test]
@@ -124,7 +126,7 @@
 
             var merged = _merger.Merge(sequence);
 
-            Assert.AreEqual(expected.Child.IntValue, merged.Child.IntValue);
+            Assert.That(expected.Child.IntValue, Is.EqualTo(merged.Child.IntValue));
         }
     }
 }

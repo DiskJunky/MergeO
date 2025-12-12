@@ -10,7 +10,7 @@
         {
             //string expected = nameof(Model.ModelID);
             //string value = ReflectionHelper.GetPropertyName<Model, int>(m => m.ModelID);
-            //Assert.AreEqual(expected, value);
+            //Assert.That(expected, value);
         }
     }
 }
