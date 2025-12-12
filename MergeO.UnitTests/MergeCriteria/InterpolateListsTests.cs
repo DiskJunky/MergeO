@@ -1,10 +1,11 @@
-﻿namespace MergeO.Tests.Contracts.Mergers.MergeCriteria
-{
-    using System.Collections;
-    using NUnit.Framework;
-    using System.Collections.Generic;
-    using MergeO.MergeCriteria;
+﻿using System.Collections;
+using System.Collections.Generic;
+using MergeO.MergeCriteria;
+using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
+namespace MergeO.UnitTests.MergeCriteria
+{
     [TestFixture]
     public static class InterpolateListsTests
     {
@@ -21,7 +22,7 @@
             var mergeCriteria = new InterpolateLists<int>(string.Empty, comparer);
             var merged = (IList)mergeCriteria.DoWrite(first, second, null);
 
-            Assert.AreEqual(sorted.Count, merged.Count);
+            Assert.That(sorted.Count, Is.EqualTo(merged.Count));
             CollectionAssert.AreEqual(sorted, merged);
         }
 
