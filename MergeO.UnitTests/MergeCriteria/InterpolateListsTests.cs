@@ -28,7 +28,7 @@ namespace MergeO.UnitTests.MergeCriteria
 
         private static List<int> UnorderedInts1()
         {
-            return new List<int>(new []
+            return new List<int>(new[]
             {
                 5,4,3,2,1
             });

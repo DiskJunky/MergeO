@@ -96,7 +96,7 @@ namespace MergeO.UnitTests
             var sequence = SequencedComplexItemBuilder.GetNewNullValueSequence();
             string mergeCriteriaKey = BreadcrumbHelper<SequencedComplexItem>.Of(s => s.StringValue);
             var neverOverwriteNullCriteria = new NeverOverwriteOldWithNull(mergeCriteriaKey);
-            var nonDefaultMergeCriteria = new List<IMergeCriteria>(new[] {neverOverwriteNullCriteria});
+            var nonDefaultMergeCriteria = new List<IMergeCriteria>(new[] { neverOverwriteNullCriteria });
 
             var mergedValue = _merger.Merge(sequence, nonDefaultMergeCriteria: nonDefaultMergeCriteria);
 

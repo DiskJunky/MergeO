@@ -33,7 +33,7 @@
             if (Child != null && (obj == null || objChildNull)) return -1;
             if (Child == null && (obj != null || !objChildNull)) return 1;
 
-            return Child.CompareTo(((NestedObject) obj).Child);
+            return Child.CompareTo(((NestedObject)obj).Child);
         }
     }
 }

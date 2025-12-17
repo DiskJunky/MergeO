@@ -21,14 +21,14 @@
             var set = new List<object[]>();
 
             // add ordered items
-            set.Add(new object[]{ DefaultItem });
-            set.Add(new object[]{ DefaultItem, DefaultItemPlusOne });
-            set.Add(new object[]{ DefaultItem, DefaultItemPlusOne, DefaultItemPlusTwo });
+            set.Add(new object[] { DefaultItem });
+            set.Add(new object[] { DefaultItem, DefaultItemPlusOne });
+            set.Add(new object[] { DefaultItem, DefaultItemPlusOne, DefaultItemPlusTwo });
 
             // add out of order items
-            set.Add(new object[]{ DefaultItemPlusOne, DefaultItem });
-            set.Add(new object[]{ DefaultItemPlusOne, DefaultItemPlusTwo, DefaultItem });
-            set.Add(new object[]{ DefaultItemPlusTwo, DefaultItemPlusOne, DefaultItem });
+            set.Add(new object[] { DefaultItemPlusOne, DefaultItem });
+            set.Add(new object[] { DefaultItemPlusOne, DefaultItemPlusTwo, DefaultItem });
+            set.Add(new object[] { DefaultItemPlusTwo, DefaultItemPlusOne, DefaultItem });
 
             return set;
         }

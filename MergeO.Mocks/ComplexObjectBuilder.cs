@@ -45,8 +45,8 @@
                 History = new[] { GetDefaultAllFieldsFilled(), GetDefaultsWithNulls() }
             };
             nullDoesNothingTest.Expected = nullDoesNothingTest.History[0];
-            
-            
+
+
             histories.Add(nullReplacedTest);
             histories.Add(nullDoesNothingTest);
 

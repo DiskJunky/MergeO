@@ -46,7 +46,8 @@
             }
             if (result == 0)
             {
-                result = Nullable.Compare(NullableIntValue, typedObj.NullableIntValue); }
+                result = Nullable.Compare(NullableIntValue, typedObj.NullableIntValue);
+            }
 
             if (result == 0)
             {

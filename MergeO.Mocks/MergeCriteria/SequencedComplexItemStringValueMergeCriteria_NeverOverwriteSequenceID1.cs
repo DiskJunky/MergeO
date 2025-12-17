@@ -42,7 +42,7 @@
         {
             if (contextData == null) throw new ArgumentNullException(nameof(contextData));
 
-            var oldRoot = (SequencedComplexItem) contextData.OldValue;
+            var oldRoot = (SequencedComplexItem)contextData.OldValue;
 
             if (oldRoot.SequenceID == 1) return oldValue;
             return newValue;

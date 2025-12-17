@@ -130,7 +130,7 @@
         {
             return Merge(history, historyComparer, nonDefaultMergeCriteria);
         }
-        
+
         /// <summary>
         /// This merges a history of an object graph into a single object instance of type <typeparamref name="T"/>
         /// that contains the most recent data.

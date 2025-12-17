@@ -43,8 +43,8 @@
         /// </returns>
         public object DoWrite(object oldValue, object newValue, IContextRoot contextData)
         {
-            var oldCollection = (List<T>) oldValue;
-            var newCollection = (List<T>) newValue;
+            var oldCollection = (List<T>)oldValue;
+            var newCollection = (List<T>)newValue;
 
             oldCollection.AddRange(newCollection);
             oldCollection.Sort(_comparer);
